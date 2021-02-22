@@ -18,5 +18,15 @@ export const taskRepository = {
         } catch (err) {
             return 'error'
         }
+    },
+
+    async indexById(devId: string) {
+        try {
+            const tasks = await Task.find({ dev: devId })
+
+            return tasks
+        } catch (err) {
+            return 'error'
+        }
     }
 }

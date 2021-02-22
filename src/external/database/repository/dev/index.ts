@@ -1,8 +1,8 @@
-import { IDev } from '../../../../entities/dev'
+import { IDev, IDevResponse } from '../../../../entities/dev'
 import Dev from '../../mongodb/Models/Dev'
 
 export const devRepository = {
-    async findByGithub(github: string): Promise<object | 'error'> {
+    async findByGithub(github: string): Promise<IDevResponse | 'error'> {
         try {
             const dev = await Dev.findOne({ github: github })
             return dev
