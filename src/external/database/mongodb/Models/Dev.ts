@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
-import { Dev } from '../../../../entities/dev'
+import { IDev } from '../../../../entities/dev'
 
-interface IDevModel extends mongoose.Document, Dev {}
+interface IDevModel extends mongoose.Document, IDev {}
 
 const Schema = new mongoose.Schema({
     github: {
