@@ -1,10 +1,7 @@
 import mongoose from 'mongoose'
+import { Dev } from '../../../../entities/dev'
 
-interface IDev extends mongoose.Document {
-    github: string
-    avatar: string
-    name: string
-}
+interface IDevModel extends mongoose.Document, Dev {}
 
 const Schema = new mongoose.Schema({
     github: {
@@ -22,4 +19,4 @@ const Schema = new mongoose.Schema({
     }
 })
 
-export default mongoose.model<IDev>('Dev', Schema)
+export default mongoose.model<IDevModel>('Dev', Schema)
