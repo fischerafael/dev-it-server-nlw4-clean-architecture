@@ -5,3 +5,5 @@ export interface IDev {
 }
 
 export type IGithub = string
+
+export type IDevId = string

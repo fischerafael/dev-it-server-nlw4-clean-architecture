@@ -11,6 +11,15 @@ export const devRepository = {
         }
     },
 
+    async findById(id: string): Promise<object | 'error'> {
+        try {
+            const dev = await Dev.findById(id)
+            return dev
+        } catch (err) {
+            return 'error'
+        }
+    },
+
     async create(data: IDev) {
         try {
             const dev = await Dev.create({
