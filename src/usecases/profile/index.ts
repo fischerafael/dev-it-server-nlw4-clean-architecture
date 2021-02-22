@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import Task from '../../external/database/mongodb/Models/Task'
+
 import { devRepository } from '../../external/database/repository/dev'
 import { taskRepository } from '../../external/database/repository/task'
 import { formatHttpResponse } from '../utils/http-response-formatter'
