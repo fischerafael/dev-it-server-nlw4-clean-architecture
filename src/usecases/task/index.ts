@@ -1,5 +1,6 @@
 import { IDevId } from '../../entities/dev'
 import { ITask } from '../../entities/task'
+import Dev from '../../external/database/mongodb/Models/Dev'
 
 import { devRepository } from '../../external/database/repository/dev'
 import { taskRepository } from '../../external/database/repository/task'
@@ -14,7 +15,8 @@ export const taskService = {
                 return formatHttpResponse(403, 'Not authorized')
 
             const hasDev = await devRepository.findById(dev)
-            if (!hasDev) return formatHttpResponse(404, 'Dev not found')
+            if (!hasDev || hasDev === 'error')
+                return formatHttpResponse(404, 'Dev not found')
 
             const task = await taskRepository.create(
                 {
@@ -24,6 +26,18 @@ export const taskService = {
                 },
                 dev
             )
+
+            /*const createdTask = task as {
+                _id: string
+                description: string
+                completed: boolean
+                durationInSeconds: number
+                dev: string
+            }
+
+            hasDev.tasks.push(createdTask._id)
+            // @ts-ignore
+            await hasDev.save()*/
 
             return formatHttpResponse(200, task)
         } catch (err) {

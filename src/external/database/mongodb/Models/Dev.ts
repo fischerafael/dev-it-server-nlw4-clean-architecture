@@ -1,7 +1,9 @@
 import mongoose from 'mongoose'
 import { IDev } from '../../../../entities/dev'
 
-interface IDevModel extends mongoose.Document, IDev {}
+interface IDevModel extends mongoose.Document, IDev {
+    tasks?: string[]
+}
 
 const Schema = new mongoose.Schema({
     github: {
@@ -16,7 +18,13 @@ const Schema = new mongoose.Schema({
     name: {
         type: String,
         required: true
-    }
+    },
+    tasks: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Task'
+        }
+    ]
 })
 
 export default mongoose.model<IDevModel>('Dev', Schema)

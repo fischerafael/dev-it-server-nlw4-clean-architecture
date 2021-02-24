@@ -11,7 +11,18 @@ export const devRepository = {
         }
     },
 
-    async findById(id: string): Promise<object | 'error'> {
+    async findById(
+        id: string
+    ): Promise<
+        | {
+              _id: string
+              name: string
+              github: string
+              avatar: string
+              tasks: string[]
+          }
+        | 'error'
+    > {
         try {
             const dev = await Dev.findById(id)
             return dev
@@ -35,7 +46,7 @@ export const devRepository = {
 
     async findAll() {
         try {
-            const devs = await Dev.find()
+            const devs = await Dev.find().populate('tasks')
             return devs
         } catch (err) {
             return 'error'
