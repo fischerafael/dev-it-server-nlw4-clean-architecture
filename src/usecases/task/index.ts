@@ -27,7 +27,7 @@ export const taskService = {
                 dev
             )
 
-            /*const createdTask = task as {
+            const createdTask = task as {
                 _id: string
                 description: string
                 completed: boolean
@@ -37,7 +37,7 @@ export const taskService = {
 
             hasDev.tasks.push(createdTask._id)
             // @ts-ignore
-            await hasDev.save()*/
+            await hasDev.save()
 
             return formatHttpResponse(200, task)
         } catch (err) {
